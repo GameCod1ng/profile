@@ -1,0 +1,150 @@
+/* ===== 색상 팔레트: 라이트(기본) ===== */
+:root {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-soft: #dbeafe;
+  --danger: #ef4444;
+  --shadow: 0 4px 16px rgba(15, 23, 42, .07);
+}
+
+/* ===== 다크 모드: <html data-theme="dark"> 일 때 변수만 바뀜 ===== */
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --card: #162033;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --line: #263449;
+  --primary: #60a5fa;
+  --primary-dark: #93c5fd;
+  --primary-soft: #1e3a5f;
+  --shadow: 0 4px 16px rgba(0, 0, 0, .35);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  transition: background .3s, color .3s;
+}
+
+/* ===== 맨 위 바 ===== */
+.topbar { position: sticky; top: 0; z-index: 10; background: var(--card); border-bottom: 1px solid var(--line); }
+.topbar-in { max-width: 680px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+.brand { font-weight: 800; font-size: 1.1rem; color: var(--primary); }
+.theme-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  font: inherit; font-size: .85rem; font-weight: 700;
+  color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 99px; cursor: pointer;
+}
+.theme-btn:hover { border-color: var(--primary); }
+
+/* ===== 본문 폭 ===== */
+.wrap { max-width: 680px; margin: 0 auto; padding: 8px 20px 40px; }
+
+/* ===== 소개 영역 ===== */
+.hero { text-align: center; padding: 32px 0 12px; }
+.avatar {
+  width: 92px; height: 92px; margin: 0 auto 14px;
+  display: grid; place-items: center;
+  font-size: 2.6rem;
+  background: var(--card);
+  border: 3px solid var(--primary); border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+h1 { margin: 0 0 10px; font-size: 1.9rem; letter-spacing: -.5px; }
+.badge {
+  display: inline-block; padding: 5px 14px;
+  font-size: .82rem; font-weight: 700;
+  color: var(--primary-dark); background: var(--primary-soft);
+  border-radius: 99px;
+}
+.intro { margin: 14px 0 0; color: var(--muted); line-height: 1.7; }
+
+/* ===== 섹션 제목: 왼쪽 파란 막대 ===== */
+.sec { margin: 28px 0 14px; padding-left: 12px; font-size: 1.2rem; border-left: 4px solid var(--primary); }
+
+/* ===== 현황 카드 ===== */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stat {
+  padding: 16px 8px; text-align: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.stat-icon { font-size: 1.5rem; }
+.stat b { display: block; margin-top: 4px; font-size: 1.6rem; color: var(--primary); }
+.stat span { font-size: .82rem; color: var(--muted); }
+
+/* ===== 큰 패널 ===== */
+.panel { padding: 22px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); }
+
+/* ===== 달성률 게이지 ===== */
+.gauge-text { margin: 0 0 8px; font-weight: 700; }
+.gauge { height: 10px; margin-bottom: 20px; background: var(--line); border-radius: 99px; overflow: hidden; }
+#gauge-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), #22c55e); border-radius: 99px; transition: width .35s ease; }
+
+/* ===== 입력 ===== */
+.add-form { display: flex; gap: 8px; margin-bottom: 16px; }
+#todo-input {
+  flex: 1; min-width: 0; padding: 12px 14px;
+  font: inherit; color: var(--text); background: var(--bg);
+  border: 2px solid var(--line); border-radius: 12px; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+#todo-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(59, 130, 246, .18); }
+button.primary {
+  padding: 0 22px; font: inherit; font-weight: 700; color: #fff;
+  background: var(--primary-dark); border: none; border-radius: 12px; cursor: pointer;
+  transition: transform .15s, filter .15s;
+}
+[data-theme="dark"] button.primary { background: #2563eb; }
+button.primary:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+/* ===== 필터 탭 ===== */
+.tabs { display: flex; gap: 6px; padding: 4px; margin-bottom: 14px; background: var(--bg); border-radius: 12px; }
+.tab {
+  flex: 1; padding: 9px 0; font: inherit; font-weight: 700; color: var(--muted);
+  background: transparent; border: none; border-radius: 9px; cursor: pointer; transition: .15s;
+}
+.tab.active { color: var(--primary-dark); background: var(--card); box-shadow: 0 2px 6px rgba(0, 0, 0, .1); }
+
+/* ===== 목록 ===== */
+.todo-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.todo-item {
+  display: flex; align-items: center; gap: 12px; padding: 13px 14px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+  animation: pop .25s ease;
+}
+@keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.todo-item input[type="checkbox"] { width: 20px; height: 20px; flex: none; accent-color: var(--primary); cursor: pointer; }
+.todo-text { flex: 1; min-width: 0; line-height: 1.45; word-break: break-word; }
+.todo-item.completed .todo-text { color: var(--muted); text-decoration: line-through; }
+.del-btn {
+  flex: none; padding: 6px 10px; font: inherit; font-size: .8rem; color: var(--danger);
+  background: transparent; border: 1px solid transparent; border-radius: 8px; cursor: pointer;
+}
+.del-btn:hover { background: rgba(239, 68, 68, .1); border-color: rgba(239, 68, 68, .3); }
+.empty { padding: 26px 0; text-align: center; color: var(--muted); }
+
+/* ===== 아래쪽 ===== */
+.foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: .9rem; color: var(--muted); }
+.link-btn { font: inherit; font-size: .85rem; color: var(--primary-dark); background: none; border: none; cursor: pointer; text-decoration: underline; }
+.link-btn:disabled { opacity: .45; cursor: default; text-decoration: none; }
+.site-foot { margin-top: 32px; text-align: center; font-size: .82rem; color: var(--muted); }
+
+@media (max-width: 480px) {
+  .wrap { padding: 4px 14px 32px; }
+  .panel { padding: 16px; }
+  h1 { font-size: 1.55rem; }
+  #theme-text { display: none; }
+}
